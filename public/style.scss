@@ -1,0 +1,369 @@
+$primary1: #D3DEDC;
+$primary2: #92A9BD;
+$primary3: #7C99AC;
+$secondary: #FFEFEF;
+$dark: #124f5a;
+$dark2: #082a31;
+$background1: #677991;
+$background2: #eee;
+
+@font-face {
+  font-family: 'Thai Font';
+  src: url("../font/PrintAble4U Regular ver 1.00.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Thai Font';
+  src: url("../font/PrintAble4U Bold ver 1.00.ttf") format("truetype");
+  font-weight: bold;
+}
+
+* {
+  font-family: 'Thai Font';
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background1;
+  padding: 0 16px;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+}
+
+.item-container {
+  padding: 2rem 5vw;
+  font-size: 2rem;
+  font-weight: bold;
+  color: $dark;
+  display: grid;
+  justify-content: start;
+  align-items: flex-start;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 2rem;
+  .main-item {
+    background: $background2;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px $secondary;
+    padding: 15px;
+    cursor: pointer;
+  }
+}
+.modal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translate(0, -1rem);
+  transition: all 0.3s;
+  transition-timing-function: ease-in-out;
+  &.active {
+    opacity: 1;
+    transform: translate(0, 0);
+    pointer-events: auto;
+  }
+}
+
+.item-selector {
+  position: relative;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: $dark;
+  margin: auto;
+  padding: 0;
+  width: 40rem;
+  border-style: solid;
+  border-width: 0.8rem;
+  border-radius: 2rem;
+  border-color: $dark;
+  .frame {
+    position: absolute;
+    width: calc(100% + 1.6rem);
+    height: calc(100% + 1.6rem - 3.6rem);
+    transform: translate(-0.8rem, -3.2rem);
+    top: 6rem;
+    left: 0;
+    border-style: solid;
+    border-width: 0.8rem;
+    border-radius: 2rem;
+    border-color: $dark;
+    pointer-events: none;
+  }
+  .label {
+    background-color: $dark;
+    position: relative;
+    height: 3.5rem;
+    font-size: 2.6rem;
+    color: $primary1;
+    span {
+      position: absolute;
+      transform: translate(0, -64%);
+      top: 50%;
+    }
+    .label-name {
+      left: 2rem;
+    }
+    .label-size {
+      left: 13rem;
+    }
+    .label-price {
+      left: 25rem;
+    }
+    .close {
+      color: #aaa;
+      position: absolute;
+      font-size: 1.8rem;
+      font-weight: bold;
+      right: 1rem;
+      top: 1.6rem;
+    }
+  }
+  .item {
+    background-color: $primary2;
+    position: relative;
+    height: 3.2rem;
+    color: $dark2;
+    span, button, input {
+      position: absolute;
+      transform: translate(0, -50%);
+      top: 50%;
+    }
+    .item-name {
+      left: 2rem;
+    }
+    .item-size {
+      left: 13rem;
+    }
+    .item-price {
+      left: 25rem;
+    }
+    button {
+      background-color: $dark;
+      width: 1.6rem;
+      height: 1.6rem;
+      font-size: 1.4rem;
+      color: $primary1;
+      border: none;
+      border-radius: 0.4rem;
+      text-align: center;
+      cursor: pointer;
+    }
+    .d {
+      right: 6.6rem;
+    }
+    input {
+      right: 3.6rem;
+      border: none;
+      border-radius: 0.4rem;
+      height: 2rem;
+      width: 2rem;
+      font-size: 1.6rem;
+      text-align: center;
+      background-color: $primary1;
+      &::-webkit-inner-spin-button 
+      ,&::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+    textarea:focus, input:focus {
+      outline: none;
+      background-color: $primary1;
+    }
+    .u {
+      right: 1rem;
+    }
+  }
+  .item {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    .add {
+      height: 2rem;
+      width: 6rem;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .item:nth-child(even) {
+    background-color: $primary3;
+  }
+}
+
+.summary {
+  text-align: center;
+}
+
+.item-cart {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  background-color: $dark;
+  margin: auto;
+  margin-right: 10rem;
+  padding: 0;
+  width: 28rem;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-radius: 1.6rem;
+  border-color: $dark;
+  .frame {
+    position: absolute;
+    width: calc(100% + 1.1rem);
+    height: calc(100% + 1.2rem);
+    transform: translate(-0.57rem, -6.6rem);
+    top: 6rem;
+    left: 0;
+    border-style: solid;
+    border-width: 0.6rem;
+    border-radius: 1.6rem;
+    border-color: $dark;
+    pointer-events: none;
+  }
+  .item {
+    background-color: $primary2;
+    position: relative;
+    height: 2rem;
+    font-size: 1.4rem;
+    color: $dark2;
+    span, button, input {
+      position: absolute;
+      transform: translate(0, -50%);
+      top: 50%;
+    }
+    .item-name {
+      left: 1rem;
+    }
+    .item-size {
+      left: 10rem;
+    }
+    .item-price {
+      left: 22rem;
+    }
+    button {
+      position: absolute;
+      right: 0.2rem;
+      background-color: transparent;
+      width: 1.6rem;
+      height: 1.6rem;
+      font-size: 1.4rem;
+      border: none;
+      text-align: center;
+      justify-content: center;
+      cursor: pointer;
+      i {
+        font-size: 1rem;
+        color: $dark;
+      }
+    }
+    .d {
+      right: 6.6rem;
+    }
+  }
+  .item:nth-child(even) {
+    background-color: $primary3;
+  }
+  .App {
+    position: absolute;
+    right: -2rem;
+    top: 0.4rem;
+    .upload__image-wrapper {
+      position: relative;
+      button{
+        position: absolute;
+        padding: 1rem;
+        background-color: $dark;
+        color: $primary1;
+        border: none;
+        border-radius: 0.4rem;
+        height: 5.7rem;
+        width: 8rem;
+        cursor: pointer;
+        p {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+      }
+      button:nth-child(2) {
+        top: 6.7rem;
+      }
+    }
+  }
+  .send {
+    position: absolute;
+    right: -10rem;
+    top: 13.8rem;
+    height: 5.8rem;
+    width: 8rem;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: $dark;
+    color: $primary1;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+  }
+}
+
+.canvas {
+  text-align: center;
+  margin-top: 2rem;
+  overflow: auto;
+}
+
+@media (max-width: 750px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+  .item-cart {
+    margin: auto;
+    margin-bottom: 10rem;
+    padding: 0;
+    width: 100%;
+    .App {
+      position: absolute;
+      top: calc(100% + 2rem);
+      left: 0;
+      height: 6rem;
+      width: 100%;
+      .upload__image-wrapper {
+        position: static;
+        display: block;
+        height: 100%;
+        button {
+          display: block;
+        }
+        button:nth-child(2) {
+          top: 0rem;
+          left: 9rem;
+        }
+      }
+    }
+    .send {
+      top: calc(100% + 2rem);
+      left: 18rem;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 8px;
+  }
+}

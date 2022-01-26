@@ -1,0 +1,424 @@
+@font-face {
+  font-family: 'Thai Font';
+  src: url("../font/PrintAble4U Regular ver 1.00.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Thai Font';
+  src: url("../font/PrintAble4U Bold ver 1.00.ttf") format("truetype");
+  font-weight: bold;
+}
+
+* {
+  font-family: 'Thai Font';
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: #677991;
+  padding: 0 16px;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+}
+
+.item-container {
+  padding: 2rem 5vw;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #124f5a;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-grid-columns: (minmax(10rem, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 2rem;
+}
+
+.item-container .main-item {
+  background: #eee;
+  border-radius: 7px;
+  -webkit-box-shadow: 0 1px 3px #FFEFEF;
+          box-shadow: 0 1px 3px #FFEFEF;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  -webkit-transform: translate(0, -1rem);
+          transform: translate(0, -1rem);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.modal.active {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  pointer-events: auto;
+}
+
+.item-selector {
+  position: relative;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #124f5a;
+  margin: auto;
+  padding: 0;
+  width: 40rem;
+  border-style: solid;
+  border-width: 0.8rem;
+  border-radius: 2rem;
+  border-color: #124f5a;
+}
+
+.item-selector .frame {
+  position: absolute;
+  width: calc(100% + 1.6rem);
+  height: calc(100% + 1.6rem - 3.6rem);
+  -webkit-transform: translate(-0.8rem, -3.2rem);
+          transform: translate(-0.8rem, -3.2rem);
+  top: 6rem;
+  left: 0;
+  border-style: solid;
+  border-width: 0.8rem;
+  border-radius: 2rem;
+  border-color: #124f5a;
+  pointer-events: none;
+}
+
+.item-selector .label {
+  background-color: #124f5a;
+  position: relative;
+  height: 3.5rem;
+  font-size: 2.6rem;
+  color: #D3DEDC;
+}
+
+.item-selector .label span {
+  position: absolute;
+  -webkit-transform: translate(0, -64%);
+          transform: translate(0, -64%);
+  top: 50%;
+}
+
+.item-selector .label .label-name {
+  left: 2rem;
+}
+
+.item-selector .label .label-size {
+  left: 13rem;
+}
+
+.item-selector .label .label-price {
+  left: 25rem;
+}
+
+.item-selector .label .close {
+  color: #aaa;
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: bold;
+  right: 1rem;
+  top: 1.6rem;
+}
+
+.item-selector .item {
+  background-color: #92A9BD;
+  position: relative;
+  height: 3.2rem;
+  color: #082a31;
+}
+
+.item-selector .item span, .item-selector .item button, .item-selector .item input {
+  position: absolute;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  top: 50%;
+}
+
+.item-selector .item .item-name {
+  left: 2rem;
+}
+
+.item-selector .item .item-size {
+  left: 13rem;
+}
+
+.item-selector .item .item-price {
+  left: 25rem;
+}
+
+.item-selector .item button {
+  background-color: #124f5a;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-size: 1.4rem;
+  color: #D3DEDC;
+  border: none;
+  border-radius: 0.4rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item-selector .item .d {
+  right: 6.6rem;
+}
+
+.item-selector .item input {
+  right: 3.6rem;
+  border: none;
+  border-radius: 0.4rem;
+  height: 2rem;
+  width: 2rem;
+  font-size: 1.6rem;
+  text-align: center;
+  background-color: #D3DEDC;
+}
+
+.item-selector .item input::-webkit-inner-spin-button, .item-selector .item input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.item-selector .item textarea:focus, .item-selector .item input:focus {
+  outline: none;
+  background-color: #D3DEDC;
+}
+
+.item-selector .item .u {
+  right: 1rem;
+}
+
+.item-selector .item {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.item-selector .item .add {
+  height: 2rem;
+  width: 6rem;
+  cursor: pointer;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.item-selector .item:nth-child(even) {
+  background-color: #7C99AC;
+}
+
+.summary {
+  text-align: center;
+}
+
+.item-cart {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  background-color: #124f5a;
+  margin: auto;
+  margin-right: 10rem;
+  padding: 0;
+  width: 28rem;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-radius: 1.6rem;
+  border-color: #124f5a;
+}
+
+.item-cart .frame {
+  position: absolute;
+  width: calc(100% + 1.1rem);
+  height: calc(100% + 1.2rem);
+  -webkit-transform: translate(-0.57rem, -6.6rem);
+          transform: translate(-0.57rem, -6.6rem);
+  top: 6rem;
+  left: 0;
+  border-style: solid;
+  border-width: 0.6rem;
+  border-radius: 1.6rem;
+  border-color: #124f5a;
+  pointer-events: none;
+}
+
+.item-cart .item {
+  background-color: #92A9BD;
+  position: relative;
+  height: 2rem;
+  font-size: 1.4rem;
+  color: #082a31;
+}
+
+.item-cart .item span, .item-cart .item button, .item-cart .item input {
+  position: absolute;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  top: 50%;
+}
+
+.item-cart .item .item-name {
+  left: 1rem;
+}
+
+.item-cart .item .item-size {
+  left: 10rem;
+}
+
+.item-cart .item .item-price {
+  left: 22rem;
+}
+
+.item-cart .item button {
+  position: absolute;
+  right: 0.2rem;
+  background-color: transparent;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-size: 1.4rem;
+  border: none;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.item-cart .item button i {
+  font-size: 1rem;
+  color: #124f5a;
+}
+
+.item-cart .item .d {
+  right: 6.6rem;
+}
+
+.item-cart .item:nth-child(even) {
+  background-color: #7C99AC;
+}
+
+.item-cart .App {
+  position: absolute;
+  right: -2rem;
+  top: 0.4rem;
+}
+
+.item-cart .App .upload__image-wrapper {
+  position: relative;
+}
+
+.item-cart .App .upload__image-wrapper button {
+  position: absolute;
+  padding: 1rem;
+  background-color: #124f5a;
+  color: #D3DEDC;
+  border: none;
+  border-radius: 0.4rem;
+  height: 5.7rem;
+  width: 8rem;
+  cursor: pointer;
+}
+
+.item-cart .App .upload__image-wrapper button p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.item-cart .App .upload__image-wrapper button:nth-child(2) {
+  top: 6.7rem;
+}
+
+.item-cart .send {
+  position: absolute;
+  right: -10rem;
+  top: 13.8rem;
+  height: 5.8rem;
+  width: 8rem;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #124f5a;
+  color: #D3DEDC;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.canvas {
+  text-align: center;
+  margin-top: 2rem;
+  overflow: auto;
+}
+
+@media (max-width: 750px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+  .item-cart {
+    margin: auto;
+    margin-bottom: 10rem;
+    padding: 0;
+    width: 100%;
+  }
+  .item-cart .App {
+    position: absolute;
+    top: calc(100% + 2rem);
+    left: 0;
+    height: 6rem;
+    width: 100%;
+  }
+  .item-cart .App .upload__image-wrapper {
+    position: static;
+    display: block;
+    height: 100%;
+  }
+  .item-cart .App .upload__image-wrapper button {
+    display: block;
+  }
+  .item-cart .App .upload__image-wrapper button:nth-child(2) {
+    top: 0rem;
+    left: 9rem;
+  }
+  .item-cart .send {
+    top: calc(100% + 2rem);
+    left: 18rem;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 8px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
