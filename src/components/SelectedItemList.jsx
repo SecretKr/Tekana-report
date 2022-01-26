@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ImageUpload from "./ImageUpload"
-const lineNotify = require('line-notify-nodejs')('yuIausaLVPLFp9wgKu7AZCAe9pAIe38En9bj4ndeWXZ');
-// const LineNotify = require("../lineNotify/client");
-
-// const ACCESS_TOKEN = "yuIausaLVPLFp9wgKu7AZCAe9pAIe38En9bj4ndeWXZ";
-// const notify = new LineNotify(`${ACCESS_TOKEN}`);
+const axios = require('axios')
+//const lineNotify = require('line-notify-nodejs')('yuIausaLVPLFp9wgKu7AZCAe9pAIe38En9bj4ndeWXZ');
 
 function SelectedItemList({myItem, setImage, removeMyItem}) {
   const [myItemd, setMyItemd] = useState([])
@@ -22,10 +19,21 @@ function SelectedItemList({myItem, setImage, removeMyItem}) {
   const sendToLine = () => {
     const canvasSave = document.getElementById("resetCanvas")
     const d = canvasSave.toDataURL('image/png')
-    //notify.sendImage(d)
-    lineNotify.notify({
-      message: " ",
-      imageFile: d
+    //const w = window.open('about:blank', 'image from canvas')
+    //w.document.write("<img src='"+d+"' alt='from canvas'/>")
+    axios({
+      url:d,
+      method:'GET',
+      responseType: 'blob'
+    })
+    .then((response) => {
+        const url = window.URL
+        .createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'Report.png');
+                document.body.appendChild(link);
+                link.click();
     })
   }
 
@@ -44,7 +52,7 @@ function SelectedItemList({myItem, setImage, removeMyItem}) {
       <ImageUpload 
         setImage={setImage}
         />
-      <button className="send" onClick={sendToLine}>Send</button>
+      <button className="send" onClick={sendToLine}>Save</button>
         </div>
     </div>
   )

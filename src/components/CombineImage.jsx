@@ -29,6 +29,9 @@ export default function CombineImage({image, myItem}) {
       }
       ctx.fillStyle = "#124f5a"
       ctx.fillText("   ==="+total+".-",x,y+40)
+      const logo = new Image()
+      logo.src = "./img/Tekana_tf.png"
+      ctx.drawImage(logo, 60, 60, 400, 400)
     }
   }, [image, canvas, myItem])
 

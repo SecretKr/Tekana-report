@@ -34,7 +34,7 @@ export default function ImageUpload({setImage}) {
               <p>Upload</p>
               <p>Image</p>
             </button>
-            <button onClick={onImageRemoveAll}><p>Remove</p><p>image</p></button>
+            <button onClick={onImageRemoveAll}><p>Remove</p><p>Image</p></button>
           </div>
         )}
       </ImageUploading>

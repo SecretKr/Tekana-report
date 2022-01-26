@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Thai Font';
-  src: url("../font/PrintAble4U Regular ver 1.00.ttf") format("truetype");
+  src: url("./font/PrintAble4U Regular ver 1.00.ttf") format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'Thai Font';
-  src: url("../font/PrintAble4U Bold ver 1.00.ttf") format("truetype");
+  src: url("./font/PrintAble4U Bold ver 1.00.ttf") format("truetype");
   font-weight: bold;
 }
 
@@ -142,6 +142,7 @@ body {
   font-weight: bold;
   right: 1rem;
   top: 1.6rem;
+  cursor: pointer;
 }
 
 .item-selector .item {
