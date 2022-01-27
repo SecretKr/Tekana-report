@@ -8,11 +8,18 @@ function SelectedItemList({myItem, setImage, removeMyItem}) {
 
   useEffect(() => {
     const newList = [...myItem]
-    if(myItem.length < 10){
-      for(var i = 0;i < 10-myItem.length;i++) {
+    var total = 0
+    var i
+    for(i = 0;i < myItem.length;i++) {
+      total += myItem[i].qnt*myItem[i].price
+    }
+    if(myItem.length < 9){
+      for(i = 0;i < 9-myItem.length;i++) {
         newList.push({idx:"dummy"+i})
       }
     }
+    if(myItem.length) newList.push({qnt:1, price:total, idx:"total"})
+    else newList.push({idx:"dummy9"})
     setMyItemd(newList)
   }, [myItem])
 
@@ -43,7 +50,7 @@ function SelectedItemList({myItem, setImage, removeMyItem}) {
         {myItemd.map((item) => (
           <div className="item" key={item.idx}>
             <span className="item-name">{item.name}</span>
-            <span className="item-size">{item.size}{item.suffix} {item.qnt ? "x"+item.qnt : ""}</span>
+            <span className="item-size">{item.size}{item.suffix} {item.qnt > 1 ? "x"+item.qnt : ""}</span>
             <span className="item-price">{item.qnt ? item.price * item.qnt : ""}</span>
             {item.name != null && <button className="item-delete" onClick={() => removeMyItem(item.idx)}><i className="fas fa-trash"></i></button>}
           </div>

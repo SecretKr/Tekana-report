@@ -323,43 +323,47 @@ body {
   overflow: auto;
 }
 
-.item-add {
-  text-align: center;
+.item-add-container {
   margin: 1rem;
   margin-bottom: 5rem;
   margin-top: 2rem;
-  background-color: $primary2;
-  border-radius: 1rem;
-  padding: 0.4rem;
-  input {
-    font-size: 1.4rem;
-    margin: 0.4rem;
-    width: 14rem;
-    height: 2.4rem;
+  text-align: center;
+  .item-add {
+    display: inline-block;
+    max-width: 800px;
+    background-color: $primary2;
+    border-radius: 1rem;
     padding: 0.4rem;
-    border: none;
-    border-radius: 0.4rem;
-    background-color: $primary1;
-    &::placeholder {
-        color: $dark;
-        font-weight: bold;
-        opacity: 60%;
+    input {
+      font-size: 1.4rem;
+      margin: 0.4rem;
+      width: 14rem;
+      height: 2.4rem;
+      padding: 0.4rem;
+      border: none;
+      border-radius: 0.4rem;
+      background-color: $primary1;
+      &::placeholder {
+          color: $dark;
+          font-weight: bold;
+          opacity: 60%;
+      }
+      color: $dark2;
     }
-    color: $dark2;
-  }
-  button {
-    height: 2.4rem;
-    width: 6rem;
-    margin: 0.4rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-    background-color: $dark;
-    color: $primary1;
-    border: none;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    text-align: center;
-    justify-content: center;
+    button {
+      height: 2.4rem;
+      width: 6rem;
+      margin: 0.4rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      background-color: $dark;
+      color: $primary1;
+      border: none;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      text-align: center;
+      justify-content: center;
+    }
   }
 }
 
@@ -367,6 +371,9 @@ input {
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
       -webkit-appearance: none;
+  }
+  &:focus {
+    outline: none;
   }
 }
 

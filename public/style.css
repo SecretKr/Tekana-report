@@ -377,17 +377,22 @@ body {
   overflow: auto;
 }
 
-.item-add {
-  text-align: center;
+.item-add-container {
   margin: 1rem;
   margin-bottom: 5rem;
   margin-top: 2rem;
+  text-align: center;
+}
+
+.item-add-container .item-add {
+  display: inline-block;
+  max-width: 800px;
   background-color: #92A9BD;
   border-radius: 1rem;
   padding: 0.4rem;
 }
 
-.item-add input {
+.item-add-container .item-add input {
   font-size: 1.4rem;
   margin: 0.4rem;
   width: 14rem;
@@ -399,31 +404,31 @@ body {
   color: #082a31;
 }
 
-.item-add input::-webkit-input-placeholder {
+.item-add-container .item-add input::-webkit-input-placeholder {
   color: #124f5a;
   font-weight: bold;
   opacity: 60%;
 }
 
-.item-add input:-ms-input-placeholder {
+.item-add-container .item-add input:-ms-input-placeholder {
   color: #124f5a;
   font-weight: bold;
   opacity: 60%;
 }
 
-.item-add input::-ms-input-placeholder {
+.item-add-container .item-add input::-ms-input-placeholder {
   color: #124f5a;
   font-weight: bold;
   opacity: 60%;
 }
 
-.item-add input::placeholder {
+.item-add-container .item-add input::placeholder {
   color: #124f5a;
   font-weight: bold;
   opacity: 60%;
 }
 
-.item-add button {
+.item-add-container .item-add button {
   height: 2.4rem;
   width: 6rem;
   margin: 0.4rem;
@@ -442,6 +447,10 @@ body {
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+input:focus {
+  outline: none;
 }
 
 @media (max-width: 750px) {

@@ -28,7 +28,7 @@ function App() {
     })
   }, [db])
 
-  async function updateItem(name, size, suffix, price) {
+  async function updateItem(name, size, price) {
     var i = 1
     var f
     await get(child(ref(db), `data/${name}`)).then((snapshot) => {
@@ -52,8 +52,7 @@ function App() {
     try{
       await set(ref(db, `data/${name}/${i}`), {
         size: size,
-        price: price,
-        suffix: suffix
+        price: price
       })
     } catch (e) {
       console.error("Error adding document: ", e);
