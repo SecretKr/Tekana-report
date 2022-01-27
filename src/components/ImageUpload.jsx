@@ -5,7 +5,6 @@ export default function ImageUpload({setImage}) {
   const [images, setImages] = React.useState([])
 
   const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex)
     setImages(imageList)
   }
 

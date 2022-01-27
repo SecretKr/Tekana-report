@@ -1,11 +1,12 @@
 import { initializeApp } from "firebase/app"
-import { getDatabase, ref, onValue} from "firebase/database"
+import { getDatabase, ref, onValue, child, get, set} from "firebase/database"
 import firebaseConfig from "../config"
 import React, {useState, useEffect} from "react"
 
 import ItemContainer from "./ItemContainer"
 import SelectedItemList from "./SelectedItemList"
 import CombineImage from "./CombineImage"
+import AddItem from "./AddItem"
 
 function App() {
   const app = initializeApp(firebaseConfig)
@@ -27,6 +28,38 @@ function App() {
     })
   }, [db])
 
+  async function updateItem(name, size, suffix, price) {
+    var i = 1
+    var f
+    await get(child(ref(db), `data/${name}`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        f = false
+      } else {
+        f = true
+      }
+    })
+
+    while (!f) {
+      await get(child(ref(db), `data/${name}/${i}`)).then((snapshot) => {
+        if (snapshot.exists()){
+          i++
+        } else {
+          f = true
+        }
+      })
+    }
+
+    try{
+      await set(ref(db, `data/${name}/${i}`), {
+        size: size,
+        price: price,
+        suffix: suffix
+      })
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
   const removeMyItem = (index) => {
     var newMyItem = myItem.filter((i) => i.idx !== index)
     setMyItem(newMyItem)
@@ -47,6 +80,9 @@ function App() {
       <CombineImage
         image={image}
         myItem={myItem}
+      />
+      <AddItem
+        updateItem={updateItem}
       />
     </div>
   );

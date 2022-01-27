@@ -317,9 +317,57 @@ body {
 }
 
 .canvas {
+  display: none;
   text-align: center;
   margin-top: 2rem;
   overflow: auto;
+}
+
+.item-add {
+  text-align: center;
+  margin: 1rem;
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+  background-color: $primary2;
+  border-radius: 1rem;
+  padding: 0.4rem;
+  input {
+    font-size: 1.4rem;
+    margin: 0.4rem;
+    width: 14rem;
+    height: 2.4rem;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 0.4rem;
+    background-color: $primary1;
+    &::placeholder {
+        color: $dark;
+        font-weight: bold;
+        opacity: 60%;
+    }
+    color: $dark2;
+  }
+  button {
+    height: 2.4rem;
+    width: 6rem;
+    margin: 0.4rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: $dark;
+    color: $primary1;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+input {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+  }
 }
 
 @media (max-width: 750px) {
@@ -332,9 +380,14 @@ body {
   html {
     font-size: 10px;
   }
+  .item-container {
+    .main-item {
+      padding: 1rem;
+    }
+  }
   .item-cart {
     margin: auto;
-    margin-bottom: 10rem;
+    margin-bottom: 6.5rem;
     padding: 0;
     width: 100%;
     .App {
